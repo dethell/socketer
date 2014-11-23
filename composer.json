@@ -1,0 +1,21 @@
+{
+    "name": "laravelfanatic/socketer",
+    "description": "WAMP2 for Laravel",
+    "authors": [
+        {
+            "name": "Dick Choi",
+            "email": "fluke8259@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "voryx/thruway":"0.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "LaravelFanatic\\Socketer": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

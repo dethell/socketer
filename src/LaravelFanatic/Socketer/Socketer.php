@@ -2,7 +2,6 @@
 
 namespace LaravelFanatic\Socketer;
 
-use Thruway\Manager\ManagerClient;
 use Thruway\Peer\Client;
 
 class Socketer extends Client{

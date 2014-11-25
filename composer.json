@@ -1,6 +1,8 @@
 {
     "name": "laravelfanatic/socketer",
     "description": "WAMP2 for Laravel",
+    "keywords": ["laravel", "websocket"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Dick Choi",

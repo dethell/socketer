@@ -10,6 +10,11 @@ When the router server is started, Laravel also make a Client which run by Larav
 
 ## How to use
 
+Add this code to providers array `app/config/app.php`
+```
+'LaravelFanatic\Socketer\SocketerServiceProvider'
+```
+
 Make `blueprint.php` in `app/` directory.
 
 and write the code like below.

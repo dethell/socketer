@@ -9,8 +9,16 @@ Socketer helps you to use Thruway(WAMP v2) Router and Client.
 When the router server is started, Laravel also make a Client which run by Laravel itself.
 
 ## How to use
+Add require key to `composer.json`.
+```json
+"laravelfanatic/socketer": "dev-master"
+```
+Run the composer update command.
+```
+composer update
+```
 
-Add this code to providers array `app/config/app.php`
+Add this code to providers array `app/config/app.php`.
 ```
 'LaravelFanatic\Socketer\SocketerServiceProvider'
 ```

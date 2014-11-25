@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Thruway\Peer\Router;
 use Thruway\Transport\RatchetTransportProvider;
 
-use LaravelFanatic\Socketer\Steward;
+use LaravelFanatic\Socketer\Socketer;
 
 class ServeSocketerCommand extends Command{
     /**
@@ -31,9 +31,13 @@ class ServeSocketerCommand extends Command{
     *
     * @return void
     */
-    public function __construct()
+
+    protected $socketer;
+
+    public function __construct(Socketer $socketer)
     {
         parent::__construct();
+        $this->socketer = $socketer;
     }
 
     /**
@@ -43,17 +47,17 @@ class ServeSocketerCommand extends Command{
     */
     public function fire()
     {
-        $manager = new Steward();
+        $socketer = $this->socketer;
 
         $loop = \React\EventLoop\Factory::create();
 
         //$loop->addTimer(2, array($manager, "testSubscribe"));
 
-        $router = new Router($loop, $manager);
+        $router = new Router($loop);
 
         $transportProvider = new RatchetTransportProvider("127.0.0.1", 9090);
 
-        $internalClientTransportProvider = new \Thruway\Transport\InternalClientTransportProvider($manager);
+        $internalClientTransportProvider = new \Thruway\Transport\InternalClientTransportProvider($socketer);
 
         $router->addTransportProvider($transportProvider);
         $router->addTransportProvider($internalClientTransportProvider);

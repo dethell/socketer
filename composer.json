@@ -17,5 +17,5 @@
             "LaravelFanatic\\Socketer": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

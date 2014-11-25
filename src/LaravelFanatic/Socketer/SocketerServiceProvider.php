@@ -25,12 +25,16 @@ class SocketerServiceProvider extends ServiceProvider {
     */
     public function register()
     {
+        $this->registerSocketer();
         $this->registerCommands();
     }
-
+    private function registerSocketer(){
+        $this->app->bind('LaravelFanatic\Socketer\Socketer');
+        $this->app->bind('LaravelFanatic\Socketer\Blueprint');
+    }
     private function registerCommands(){
-        $this->app['socketer.serve'] = $this->app->share(function($app){
-            return new ServeSocketerCommand($app);
+        $this->app['socketer.serve'] = $this->app->share(function(){
+            return $this->app->make('LaravelFanatic\Socketer\Commands\ServeSocketerCommand');
         });
         $this->commands('socketer.serve');
     }

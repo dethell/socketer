@@ -1,6 +1,4 @@
-<?php
-
-namespace LaravelFanatic\Socketer;
+<?php namespace LaravelFanatic\Socketer;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +27,6 @@ class SocketerServiceProvider extends ServiceProvider {
     }
     private function registerSocketer(){
         $this->app->bind('LaravelFanatic\Socketer\Socketer');
-        $this->app->bind('LaravelFanatic\Socketer\Blueprint');
     }
     private function registerCommands(){
         $this->app['socketer.serve'] = $this->app->share(function(){

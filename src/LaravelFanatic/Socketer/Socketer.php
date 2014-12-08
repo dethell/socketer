@@ -10,10 +10,9 @@ class Socketer extends Client{
     /**
     * Contructor
     */
-    public function __construct(Blueprint $blueprint)
+    public function __construct()
     {
         parent::__construct("realm1");
-        $this->blueprint = $blueprint;
     }
 
     public function start(){
@@ -26,13 +25,7 @@ class Socketer extends Client{
     }
 
     public function drill($session){
-        $blueprint = $this->getBlueprint();
-        eval($blueprint);
-    }
-
-    public function getBlueprint(){
-        $blueprint = $this->blueprint->load();
-        return $blueprint;
+        require app_path().'/blueprint.php';
     }
 
 }

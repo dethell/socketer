@@ -1,6 +1,4 @@
-<?php
-
-namespace LaravelFanatic\Socketer\Commands;
+<?php namespace LaravelFanatic\Socketer\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -9,7 +7,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Thruway\Peer\Router;
 use Thruway\Transport\RatchetTransportProvider;
 
-use LaravelFanatic\Socketer\Socketer;
 
 class ServeSocketerCommand extends Command{
     /**
@@ -34,10 +31,9 @@ class ServeSocketerCommand extends Command{
 
     protected $socketer;
 
-    public function __construct(Socketer $socketer)
+    public function __construct()
     {
         parent::__construct();
-        $this->socketer = $socketer;
     }
 
     /**
@@ -47,7 +43,7 @@ class ServeSocketerCommand extends Command{
     */
     public function fire()
     {
-        $socketer = $this->socketer;
+        $socketer = \App::make('LaravelFanatic\Socketer\Socketer');
 
         $loop = \React\EventLoop\Factory::create();
 

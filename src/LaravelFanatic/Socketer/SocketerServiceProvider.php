@@ -3,7 +3,6 @@
 namespace LaravelFanatic\Socketer;
 
 use Illuminate\Support\ServiceProvider;
-use LaravelFanatic\Socketer\Commands\ServeSocketerCommand;
 
 class SocketerServiceProvider extends ServiceProvider {
 

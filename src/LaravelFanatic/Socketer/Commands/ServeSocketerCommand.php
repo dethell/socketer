@@ -43,6 +43,9 @@ class ServeSocketerCommand extends Command{
     */
     public function fire()
     {
+        $port = $this->option('port');
+        $address = $this->option('ip_address');
+        
         $socketer = \App::make('LaravelFanatic\Socketer\Socketer');
 
         $loop = \React\EventLoop\Factory::create();
@@ -51,7 +54,7 @@ class ServeSocketerCommand extends Command{
 
         $router = new Router($loop);
 
-        $transportProvider = new RatchetTransportProvider("127.0.0.1", 9090);
+        $transportProvider = new RatchetTransportProvider($address, $port);
 
         $internalClientTransportProvider = new \Thruway\Transport\InternalClientTransportProvider($socketer);
 
@@ -59,6 +62,14 @@ class ServeSocketerCommand extends Command{
         $router->addTransportProvider($internalClientTransportProvider);
 
         $router->start();
+    }
+    
+    public function getOptions()
+    {
+        return [
+	       ['ip_address', 'i', InputOption::VALUE_OPTIONAL, 'IP Address', '127.0.0.1'],
+	       ['port', 'p', InputOption::VALUE_OPTIONAL, 'TCP Port', '9090'],
+        ];
     }
 
 }

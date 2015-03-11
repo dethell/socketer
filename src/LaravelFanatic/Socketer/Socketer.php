@@ -10,9 +10,9 @@ class Socketer extends Client{
     /**
     * Contructor
     */
-    public function __construct()
+    public function __construct($realm)
     {
-        parent::__construct("realm1");
+        parent::__construct($realm);
     }
 
     public function start(){

@@ -45,8 +45,9 @@ class ServeSocketerCommand extends Command{
     {
         $port = $this->option('port');
         $address = $this->option('ip_address');
+        $realm = $this->option('realm');
         
-        $socketer = \App::make('LaravelFanatic\Socketer\Socketer');
+        $socketer = \App::make('LaravelFanatic\Socketer\Socketer', [$realm]);
 
         $loop = \React\EventLoop\Factory::create();
 
@@ -69,6 +70,7 @@ class ServeSocketerCommand extends Command{
         return [
 	       ['ip_address', 'i', InputOption::VALUE_OPTIONAL, 'IP Address', '127.0.0.1'],
 	       ['port', 'p', InputOption::VALUE_OPTIONAL, 'TCP Port', '9090'],
+	       ['realm', 'r', InputOption::VALUE_OPTIONAL, 'WAMP Realm', 'realm1'],
         ];
     }
 
